@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ยืนยันการจอง</title>
+
+
+  <link rel="stylesheet" type="text/css" href="confirmation.css">
+  <script src="confirmation.js"></script>
+
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>ยืนยันการจอง</h1>
+
+    <div class="top-bar">
+      <a href="https://promma.ac.th">
+        <img src="https://promma.clubth.com/club/assets/images/schoollogo/99qFPBqbfRxk7KI.gif" alt="Logo" class="logo">
+      </a>
+      ระบบการจองโรงอาหารโรงเรียนพรหมานุสรณ์จังหวัดเพชรบุรี
+    </div>
+
+    <div class="booking-info">
+      <p>ที่นั่ง:</p>
+      <p class="seat"></p>
+      <p>รหัสประจำตัวนักเรียน:</p>
+      <ul class="student-ids"></ul>
+    </div>
+
+    <button class="button" onclick="bookSeat(seat, studentIds)">ยืนยันการจอง</button>
+
+    <div class="booked-seats">
+      <h2>ที่นั่งที่ถูกจองแล้ว</h2>
+      <div id="bookedSeatsContainer"></div>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const seat = urlParams.get("seat");
+    const studentIds = urlParams.get("studentId").split(",");
+
+    var seatElement = document.querySelector(".seat");
+    var studentIdsList = document.querySelector(".student-ids");
+
+    seatElement.innerText = seat;
+
+    studentIds.forEach(function (studentId) {
+      var studentIdItem = document.createElement("li");
+      studentIdItem.innerText = studentId;
+      studentIdsList.appendChild(studentIdItem);
+    });
+
+    loadBookedSeats();
+  </script>
+</body>
+
+</html>

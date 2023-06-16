@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ระบบการจองโรงอาหารโรงเรียนพรหมานุสรณ์จังหวัดเพชรบุรี</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="top-bar">
+        <a href="https://promma.ac.th">
+            <img src="https://promma.clubth.com/club/assets/images/schoollogo/99qFPBqbfRxk7KI.gif" alt="Logo"
+                class="logo">
+        </a>
+        ระบบการจองโรงอาหารโรงเรียนพรหมานุสรณ์จังหวัดเพชรบุรี
+    </div>
+    <div class="button-bar">
+        <button id="groupBtn" class="button active">มาแบบกลุ่ม</button>
+        <button id="soloBtn" class="button">มาแบบเดี่ยว</button>
+    </div>
+
+    <div class="content"></div>
+
+    <div class="right-panel">
+        <h2>รายระเอียดการจอง</h2>
+
+        <div id="groupSizeWrapper">
+            <h4>กรุณาระบุจำนวนคน</h4>
+            <select id="groupSize">
+                <option value="4">4 คน</option>
+                <option value="5">5 คน</option>
+                <option value="6">6 คน</option>
+            </select>
+        </div>
+        <h4>กรุณากรอกรหัสนักเรียน</h4>
+
+        <div id="studentInputs"></div>
+
+        <button id="nextBtn" class="next-button">ถัดไป</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
