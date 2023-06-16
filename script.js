@@ -91,10 +91,10 @@ nextBtn.addEventListener("click", function () {
         "&studentId=" +
         studentIds.join(",");
     } else {
-      alert("Please enter all student IDs");
+      alert("โปรดกรอกรหัสนักเรียน");
     }
   } else {
-    alert("Please select a seat");
+    alert("โปรเลือกที่นั่ง");
   }
 });
 
