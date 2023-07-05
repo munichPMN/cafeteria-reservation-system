@@ -1,123 +1,91 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Anuphan', sans-serif;
-    background-color: #F5F6FA;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  .container {
-    max-width: 500px;
-    width: 100%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 120px;
-  }
-  
-  h1 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .booking-info {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .booking-info p {
-    font-size: 16px;
-    margin: 10px 0;
-  }
-  
-  .student-ids {
-    margin-bottom: 20px;
-  }
-  
-  .student-ids ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .student-ids li {
-    margin-bottom: 5px;
-    font-size: 14px;
-  }
-  
-  .button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: #711AFF;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-align: center;
-    font-size: 16px;
-    border: none;
-  }
-  
-  .button:hover {
-    background-color: #aa35f8;
-  }
-  
-  .booked-seats {
-    margin-top: 40px;
-  }
-  
-  .booked-seats h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .booked-seats ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .booked-seats li {
-    margin-bottom: 10px;
-    font-size: 14px;
-  }
-  
-  .top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-    background-color: #fff;
-    padding: 10px;
-    text-align: left;
-    font-weight: bold;
-    font-size: 32px;
-    color: #1F2029;
-    border-bottom: 2px solid #E5E7EF;
-    height: 100px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .top-bar .logo {
-    max-height: 90px;
-    width: auto;
-    margin-right: 30px;
-  }
-  
-  .top-bar .title {
-    flex-grow: 1;
-  }
-  
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Anuphan', sans-serif;
+  background-color: #1F2029;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5em;
+}
+
+.booking-info p {
+  font-size: 1.2em;
+  margin: 20px 0;
+  color: #333;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #711AFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 1.2em;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #aa35f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.booked-seats {
+  margin-top: 40px;
+}
+
+.booked-seats h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #333;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background-color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 24px;
+  color: #1F2029;
+  border-bottom: 1px solid #E5E7EF;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-bar .logo {
+  max-height: 80px;
+  width: auto;
+  margin-right: 20px;
+}
