@@ -45,11 +45,40 @@ function bookSeat(seat, studentIds) {
   }
 }
 
+function cancelReservation(seat) {
+  var bookedSeats = JSON.parse(localStorage.getItem("bookedSeats"));
+
+  if (!Array.isArray(bookedSeats) || bookedSeats.length === 0) {
+    alert("ไม่มีที่นั่งที่ถูกจอง");
+    return;
+  }
+
+  for (var i = 0; i < bookedSeats.length; i++) {
+    var booking = bookedSeats[i];
+    if (booking.seat === seat) {
+      if (isBookingCreatedByUser(booking, loggedInUser)) {
+        bookedSeats.splice(i, 1);
+        localStorage.setItem("bookedSeats", JSON.stringify(bookedSeats));
+        alert("ยกเลิกการจองที่นั่ง " + seat + " เรียบร้อยแล้ว");
+        location.reload();
+        return;
+      } else {
+        alert("คุณไม่สามารถยกเลิกการจองที่นั่งนี้ได้");
+        return;
+      }
+    }
+  }
+
+  alert("ไม่พบการจองที่นั่ง " + seat);
+}
+
 function loadBookedSeats() {
   var bookedSeats = JSON.parse(localStorage.getItem("bookedSeats"));
   if (bookedSeats) {
     var bookedSeatsContainer = document.getElementById("bookedSeatsContainer");
     var bookedSeatsList = document.createElement("ul");
+
+    bookedSeats.reverse();
 
     bookedSeats.forEach(function (booking) {
       var seat = booking.seat;
@@ -68,8 +97,19 @@ function loadBookedSeats() {
         studentIdsList.appendChild(studentIdItem);
       });
 
+      var cancelButton = document.createElement("button");
+      cancelButton.innerText = "ยกเลิกการจอง";
+      cancelButton.className = "cancelButton";
+      cancelButton.addEventListener("click", function () {
+        cancelReservation(seat);
+      });
+
       seatItem.appendChild(studentIdsList);
+      seatItem.appendChild(cancelButton);
       bookedSeatsList.appendChild(seatItem);
+
+      var lineBreak = document.createElement("br");
+      bookedSeatsList.appendChild(lineBreak);
     });
 
     bookedSeatsContainer.appendChild(bookedSeatsList);

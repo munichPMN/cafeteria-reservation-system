@@ -1,79 +1,80 @@
-const loginForm = document.getElementById('loginForm');
+const bookedSeats = JSON.parse(localStorage.getItem("bookedSeats")) || [];
+
+const loginForm = document.getElementById("loginForm");
 let loggedInUser;
 
 const users = [
-  { username: 'std1', password: 'pass1' },
-  { username: 'std2', password: 'pass2' },
-  { username: 'std3', password: 'pass3' },
-  { username: 'std4', password: 'pass4' },
-  { username: 'std5', password: 'pass5' },
-  { username: 'std6', password: 'pass6' },
-  { username: 'std7', password: 'pass7' },
-  { username: 'std8', password: 'pass8' },
-  { username: 'std9', password: 'pass9' },
-  { username: 'std10', password: 'pass10' },
-  { username: 'std11', password: 'pass11' },
-  { username: 'std12', password: 'pass12' },
-  { username: 'std13', password: 'pass13' },
-  { username: 'std14', password: 'pass14' },
-  { username: 'std15', password: 'pass15' },
-  { username: 'std16', password: 'pass16' },
-  { username: 'std17', password: 'pass17' },
-  { username: 'std18', password: 'pass18' },
-  { username: 'std19', password: 'pass19' },
-  { username: 'std20', password: 'pass20' },
-  { username: 'std21', password: 'pass21' },
-  { username: 'std22', password: 'pass22' },
-  { username: 'std23', password: 'pass23' },
-  { username: 'std24', password: 'pass24' },
-  { username: 'std25', password: 'pass25' },
-  { username: 'std26', password: 'pass26' },
-  { username: 'std27', password: 'pass27' },
-  { username: 'std28', password: 'pass28' },
-  { username: 'std29', password: 'pass29' },
-  { username: 'std30', password: 'pass30' },
-  { username: 'std31', password: 'pass31' },
-  { username: 'std32', password: 'pass32' },
-  { username: 'std33', password: 'pass33' },
-  { username: 'std34', password: 'pass34' },
-  { username: 'std35', password: 'pass35' },
-  { username: 'std36', password: 'pass36' },
-  { username: 'std37', password: 'pass37' },
-  { username: 'std38', password: 'pass38' },
-  { username: 'std39', password: 'pass39' },
-  { username: 'std40', password: 'pass40' },
-  { username: 'std41', password: 'pass41' },
-  { username: 'std42', password: 'pass42' },
-  { username: 'std43', password: 'pass43' },
-  { username: 'std44', password: 'pass44' },
-  { username: 'std45', password: 'pass45' },
-  { username: 'std46', password: 'pass46' },
-  { username: 'std47', password: 'pass47' },
-  { username: 'std48', password: 'pass48' },
-  { username: 'std49', password: 'pass49' },
-  { username: 'std50', password: 'pass50' }
+  { username: "std1", password: "pass1" },
+  { username: "std2", password: "pass2" },
+  { username: "std3", password: "pass3" },
+  { username: "std4", password: "pass4" },
+  { username: "std5", password: "pass5" },
+  { username: "std6", password: "pass6" },
+  { username: "std7", password: "pass7" },
+  { username: "std8", password: "pass8" },
+  { username: "std9", password: "pass9" },
+  { username: "std10", password: "pass10" },
+  { username: "std11", password: "pass11" },
+  { username: "std12", password: "pass12" },
+  { username: "std13", password: "pass13" },
+  { username: "std14", password: "pass14" },
+  { username: "std15", password: "pass15" },
+  { username: "std16", password: "pass16" },
+  { username: "std17", password: "pass17" },
+  { username: "std18", password: "pass18" },
+  { username: "std19", password: "pass19" },
+  { username: "std20", password: "pass20" },
+  { username: "std21", password: "pass21" },
+  { username: "std22", password: "pass22" },
+  { username: "std23", password: "pass23" },
+  { username: "std24", password: "pass24" },
+  { username: "std25", password: "pass25" },
+  { username: "std26", password: "pass26" },
+  { username: "std27", password: "pass27" },
+  { username: "std28", password: "pass28" },
+  { username: "std29", password: "pass29" },
+  { username: "std30", password: "pass30" },
+  { username: "std31", password: "pass31" },
+  { username: "std32", password: "pass32" },
+  { username: "std33", password: "pass33" },
+  { username: "std34", password: "pass34" },
+  { username: "std35", password: "pass35" },
+  { username: "std36", password: "pass36" },
+  { username: "std37", password: "pass37" },
+  { username: "std38", password: "pass38" },
+  { username: "std39", password: "pass39" },
+  { username: "std40", password: "pass40" },
+  { username: "std41", password: "pass41" },
+  { username: "std42", password: "pass42" },
+  { username: "std43", password: "pass43" },
+  { username: "std44", password: "pass44" },
+  { username: "std45", password: "pass45" },
+  { username: "std46", password: "pass46" },
+  { username: "std47", password: "pass47" },
+  { username: "std48", password: "pass48" },
+  { username: "std49", password: "pass49" },
+  { username: "std50", password: "pass50" },
 ];
 
-loginForm.addEventListener('submit', (e) => {
+loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
-  const user = users.find(user => user.username === username && user.password === password);
+  const user = users.find(
+    (user) => user.username === username && user.password === password
+  );
 
   if (user) {
     loggedInUser = username;
-    document.querySelector('.login-container').style.display = 'none';
+    document.querySelector(".login-container").style.display = "none";
   } else {
-    alert('รหัสนักเรียนหรือรหัสผ่านไม่ถูกต้อง');
+    alert("รหัสนักเรียนหรือรหัสผ่านไม่ถูกต้อง");
   }
 });
 
-
-
-
 const zones = ["a", "b", "c", "d"];
-const soloZones = ["e", "f", "g", "h","i","j"];
+const soloZones = ["e", "f", "g", "h", "i", "j"];
 
 const content = document.querySelector(".content");
 const studentIdInputs = document.getElementById("studentInputs");
@@ -101,23 +102,33 @@ const createGroupSeats = (zones, numPeople, numOfSeats) => {
       const seat = document.createElement("div");
       const seatLabel = document.createElement("div");
       const seatId = `seat${zone.toUpperCase()}${i}`;
-  
+      const seatIdName = `${zone.toUpperCase()}${i}`;
+
       seat.className = `seat zone-${zone}`;
       seat.id = seatId;
       seat.setAttribute("data-seat-number", `${zone.toUpperCase()}${i}`);
       seatLabel.className = "seat-label";
       seatLabel.textContent = `${zone.toUpperCase()}${i}`;
 
+      const isBooked = checkSeatBooking(seatIdName);
+      if (isBooked) {
+        seat.classList.add("booked");
+      }
+
       seat.appendChild(seatLabel);
       seatMap.appendChild(seat);
 
       seat.addEventListener("click", function () {
-        const previouslySelectedSeat = document.querySelector(".seat.selected");
-        if (previouslySelectedSeat) {
-          previouslySelectedSeat.classList.remove("selected");
+        const isBooked = this.classList.contains("booked");
+        if (!isBooked) {
+          const previouslySelectedSeat =
+            document.querySelector(".seat.selected");
+          if (previouslySelectedSeat) {
+            previouslySelectedSeat.classList.remove("selected");
+          }
+          this.classList.add("selected");
+          selectedSeat = this;
         }
-        this.classList.add("selected");
-        selectedSeat = this;
       });
     }
     content.appendChild(seatMap);
@@ -136,7 +147,7 @@ const createGroupSeats = (zones, numPeople, numOfSeats) => {
 const createSoloSeats = (zones, numPeople, numOfSeats) => {
   zones.forEach((zone) => {
     const seatMap = document.createElement("div");
-    
+
     seatMap.className = "seat-map";
 
     const zoneTitle = document.createElement("h3");
@@ -148,23 +159,33 @@ const createSoloSeats = (zones, numPeople, numOfSeats) => {
       const seat = document.createElement("div");
       const seatLabel = document.createElement("div");
       const seatId = `seat${zone.toUpperCase()}${i}`;
-  
+      const seatIdName = `${zone.toUpperCase()}${i}`;
+
       seat.className = `seat solo zone-${zone}`;
       seat.id = seatId;
       seat.setAttribute("data-seat-number", `${zone.toUpperCase()}${i}`);
       seatLabel.className = "seat-label";
       seatLabel.textContent = `${zone.toUpperCase()}${i}`;
 
+      const isBooked = checkSeatBooking(seatIdName);
+      if (isBooked) {
+        seat.classList.add("booked");
+      }
+
       seat.appendChild(seatLabel);
       seatMap.appendChild(seat);
 
       seat.addEventListener("click", function () {
-        const previouslySelectedSeat = document.querySelector(".seat.selected");
-        if (previouslySelectedSeat) {
-          previouslySelectedSeat.classList.remove("selected");
+        const isBooked = this.classList.contains("booked");
+        if (!isBooked) {
+          const previouslySelectedSeat =
+            document.querySelector(".seat.selected");
+          if (previouslySelectedSeat) {
+            previouslySelectedSeat.classList.remove("selected");
+          }
+          this.classList.add("selected");
+          selectedSeat = this;
         }
-        this.classList.add("selected");
-        selectedSeat = this;
       });
     }
     content.appendChild(seatMap);
@@ -196,45 +217,49 @@ soloBtn.addEventListener("click", function () {
   groupBtn.classList.remove("active");
 });
 
-
 nextBtn.addEventListener("click", function () {
   if (selectedSeat) {
-    const studentIds = Array.from(
-      document.querySelectorAll(".student-id-input")
-    )
-      .map((input) => input.value)
-      .filter((id) => id);
-      
+    const studentInputs = document.querySelectorAll(".student-id-input");
+    const studentIds = Array.from(studentInputs).map((input) =>
+      input.value.trim()
+    );
+
     if (
-      studentIds.length ===
-      document.querySelectorAll(".student-id-input").length
+      studentIds.length === studentInputs.length &&
+      studentIds.every((id) => id !== "")
     ) {
       if (studentIds.includes(loggedInUser)) {
-        if (studentIds.every(id => users.some(user => user.username === id))) {
-          const seatNumber = selectedSeat.getAttribute("data-seat-number");
-          window.location.href =
-            "confirmation.html?seat=" +
-            seatNumber +
-            "&studentId=" +
-            studentIds.join(",");
+        if (
+          studentIds.every((id) => users.some((user) => user.username === id))
+        ) {
+          const uniqueStudentIds = [...new Set(studentIds)];
+          if (uniqueStudentIds.length === studentIds.length) {
+            const seatNumber = selectedSeat.getAttribute("data-seat-number");
+            if (checkBooking(seatNumber, studentIds)) {
+              alert("รหัสนักเรียนหรือที่นั่งถูกจองแล้ว");
+            } else {
+              bookSeat(seatNumber, studentIds);
+            }
+          } else {
+            alert("กรุณาใส่รหัสนักเรียนที่ไม่ซ้ำกันในกลุ่ม");
+          }
         } else {
-          alert('รหัสนักเรียนที่ป้อนไม่ตรงกับข้อมูลที่มีอยู่ในระบบ');
+          alert("รหัสนักเรียนที่ป้อนไม่ตรงกับข้อมูลที่มีอยู่ในระบบ");
         }
       } else {
-        alert('รหัสนักเรียนที่ล็อกอินแล้วจะต้องป้อนรหัสนักเรียนในฟอร์มการจอง');
+        alert("รหัสนักเรียนที่ล็อกอินแล้วจะต้องป้อนรหัสนักเรียนในฟอร์มการจอง");
       }
     } else {
-      alert("โปรดกรอกรหัสนักเรียน");
+      alert("โปรดกรอกทุกช่องรหัสนักเรียน");
     }
   } else {
     alert("โปรดเลือกที่นั่ง");
   }
 });
 
-
-
 window.onload = function () {
   groupBtn.click();
+  loadBookedSeats();
 };
 
 document.getElementById("groupSize").addEventListener("change", function () {
@@ -250,3 +275,11 @@ document.getElementById("groupSize").addEventListener("change", function () {
 });
 
 document.getElementById("groupSize").dispatchEvent(new Event("change"));
+
+function checkSeatBooking(seat) {
+  return bookedSeats.some((booking) => booking.seat === seat);
+}
+
+function isBookingCreatedByUser(booking, username) {
+  return booking.studentIds.includes(username);
+}
